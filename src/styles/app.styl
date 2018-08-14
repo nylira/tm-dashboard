@@ -1,0 +1,147 @@
+:root
+  // change for dark/light themes
+  --tertiary  hsl( 325,  96%,  59%)
+  --secondary hsl( 277,  92%,  58%)
+  --primary   hsl( 233,  88%,  57%)
+  --link      hsl( 217, 100%,  70%)
+  --hover     hsl( 217, 100%,  55%)
+  --bright    hsl(   0, 100%, 100%)
+  --txt       hsla(  0, 100%, 100%, 0.8)
+  --dim       hsla(  0, 100%, 100%, 0.667)
+  --bc        hsla(233,  24%,  75%, 0.175)
+  --bc-dim    hsla(233,  24%,  75%, 0.0875)
+  --app-fg    hsl( 233,  30%,  22%)
+  --app-bg    hsl( 233,  36%,  18%)
+  --app-nav   hsl( 233,  38%,  14%)
+
+  // deprecated
+  --input-bc hsla(233,36%,36%,0.12)
+  --input-bc-hover hsl(233, 100%, 70%)
+  --input-bg hsl(233, 36%, 18%)
+
+  // don't change
+  --success hsl(120,58%,55%)
+  --success-bc hsl(120,58%,41%)
+  --warning hsl(35,100%,50%)
+  --warning-bc hsl(35,75%,38%)
+  --danger hsl(0,100%,55%)
+  --danger-bc hsl(0,100%,41%)
+  --tendermint #5EAD37
+
+flex-version = flex
+support-for-ie = false
+vendor-prefixes = official
+@import '../../node_modules/nib/index.styl'
+// @import './print.styl' print
+
+@require './variables.styl'
+// @require './vendor/*'
+
+global-reset()
+reset-html5()
+
+*
+  box-sizing border-box
+
+body
+  background var(--app-bg)
+  -webkit-text-size-adjust 100%
+
+a
+  color var(--link)
+  text-decoration none
+  cursor pointer
+  &:hover
+    color var(--hover)
+
+body, input, button, textarea
+  df()
+
+strong
+  font-weight 500
+
+em
+  font-style italic
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6
+  line-height 1.25
+  color var(--bright)
+  font-weight 500
+  &.material-icons
+    font-family "Material Icons"
+  &:first-child
+    margin-top 0
+  &:last-child
+    margin-bottom 0
+
+h1, .h1
+  font-size h1 * 0.875
+
+h2, .h2
+  font-size h2 * 0.875
+
+h3, .h3
+  font-size h3
+
+h4, .h4
+  font-size h4
+
+h5, .h5
+  font-size h5
+
+h6, .h6
+  font-size h6
+  color var(--dim)
+  text-transform uppercase
+  letter-spacing 0.0625em
+
+@media screen and (min-width: 1024px)
+  h1, .h1
+    font-size h1
+
+  h2, .h2
+    font-size h2
+
+  h3, .h3
+    font-size h3
+
+  .mobile-only
+    display none
+
+.anim-spin
+  -webkit-animation: keyframes-spin 2s infinite linear
+  animation: keyframes-spin 2s infinite linear
+
+.anim-pulse
+  -webkit-animation: keyframes-spin 1s infinite steps(8)
+  animation: keyframes-spin 1s infinite steps(8)
+
+@keyframes keyframes-spin
+  0%
+    -webkit-transform: rotate(0deg)
+    transform: rotate(0deg)
+  100%
+    -webkit-transform: rotate(359deg)
+    transform: rotate(359deg)
+
+.mobile
+  visibility visible
+
+.desktop
+  visibility collapse
+
+.desktop-inline
+.desktop-block
+.desktop-flex
+  display none
+@media screen and (min-width: 768px)
+  .mobile
+    visibility collapse
+  .desktop
+    visibility visible
+  .desktop-inline
+    display inline
+  .desktop-block
+    display block
+  .desktop-flex
+    display flex
