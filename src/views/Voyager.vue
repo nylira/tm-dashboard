@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { max, maxBy, orderBy, sumBy } from "lodash";
+import { max, maxBy, orderBy, reverse, sumBy } from "lodash";
 import getJson from "../scripts/getJson";
 import moment from "moment";
 import Chart from "chart.js";
@@ -105,7 +105,7 @@ export default {
           downloads: downloads
         };
       });
-      return orderBy(releases, "version");
+      return reverse(orderBy(releases, "id"));
     },
     getOS(asset) {
       if (this.isMacOS(asset)) {
